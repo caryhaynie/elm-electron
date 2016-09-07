@@ -17,11 +17,13 @@ model =
 
 -- Update
 
-type alias Msg = Header.Msg
+type Msg = HeaderUpdate Header.Msg
 
 update : Msg -> Model -> Model
 update msg model =
-    { header = (Header.update msg model.header) }
+    case msg of
+        HeaderUpdate headerMsg ->
+    { model | header = (Header.update headerMsg model.header) }
 
 -- View
 
@@ -30,6 +32,6 @@ view model =
     div
         []
         [
-            (Header.view model.header)
+            App.map HeaderUpdate (Header.view model.header)
         ]
         

@@ -7464,6 +7464,22 @@ var _elm_lang$html$Html_App$beginnerProgram = function (_p1) {
 };
 var _elm_lang$html$Html_App$map = _elm_lang$virtual_dom$VirtualDom$map;
 
+var _caryhaynie$elm_electron$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				header: A2(_caryhaynie$elm_electron$Header$update, _p0._0, model.header)
+			});
+	});
+var _caryhaynie$elm_electron$Main$model = {header: 'Hello, Electron!'};
+var _caryhaynie$elm_electron$Main$Model = function (a) {
+	return {header: a};
+};
+var _caryhaynie$elm_electron$Main$HeaderUpdate = function (a) {
+	return {ctor: 'HeaderUpdate', _0: a};
+};
 var _caryhaynie$elm_electron$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -7471,22 +7487,15 @@ var _caryhaynie$elm_electron$Main$view = function (model) {
 			[]),
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_caryhaynie$elm_electron$Header$view(model.header)
+				A2(
+				_elm_lang$html$Html_App$map,
+				_caryhaynie$elm_electron$Main$HeaderUpdate,
+				_caryhaynie$elm_electron$Header$view(model.header))
 			]));
 };
-var _caryhaynie$elm_electron$Main$update = F2(
-	function (msg, model) {
-		return {
-			header: A2(_caryhaynie$elm_electron$Header$update, msg, model.header)
-		};
-	});
-var _caryhaynie$elm_electron$Main$model = {header: 'Hello, Electron!'};
 var _caryhaynie$elm_electron$Main$main = {
 	main: _elm_lang$html$Html_App$beginnerProgram(
 		{model: _caryhaynie$elm_electron$Main$model, update: _caryhaynie$elm_electron$Main$update, view: _caryhaynie$elm_electron$Main$view})
-};
-var _caryhaynie$elm_electron$Main$Model = function (a) {
-	return {header: a};
 };
 
 var Elm = {};
