@@ -7406,15 +7406,87 @@ var _elm_lang$html$Html$summary = _elm_lang$html$Html$node('summary');
 var _elm_lang$html$Html$menuitem = _elm_lang$html$Html$node('menuitem');
 var _elm_lang$html$Html$menu = _elm_lang$html$Html$node('menu');
 
-var _caryhaynie$elm_electron$Main$main = {
-	main: A2(
+var _caryhaynie$elm_electron$Header$view = function (model) {
+	return A2(
 		_elm_lang$html$Html$h1,
 		_elm_lang$core$Native_List.fromArray(
 			[]),
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html$text('Hello from Elm!')
-			]))
+				_elm_lang$html$Html$text(model)
+			]));
+};
+var _caryhaynie$elm_electron$Header$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return _p0._0;
+	});
+var _caryhaynie$elm_electron$Header$model = 'Hello, World!';
+var _caryhaynie$elm_electron$Header$NewHeader = function (a) {
+	return {ctor: 'NewHeader', _0: a};
+};
+
+var _elm_lang$html$Html_App$programWithFlags = _elm_lang$virtual_dom$VirtualDom$programWithFlags;
+var _elm_lang$html$Html_App$program = function (app) {
+	return _elm_lang$html$Html_App$programWithFlags(
+		_elm_lang$core$Native_Utils.update(
+			app,
+			{
+				init: function (_p0) {
+					return app.init;
+				}
+			}));
+};
+var _elm_lang$html$Html_App$beginnerProgram = function (_p1) {
+	var _p2 = _p1;
+	return _elm_lang$html$Html_App$programWithFlags(
+		{
+			init: function (_p3) {
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_p2.model,
+					_elm_lang$core$Native_List.fromArray(
+						[]));
+			},
+			update: F2(
+				function (msg, model) {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						A2(_p2.update, msg, model),
+						_elm_lang$core$Native_List.fromArray(
+							[]));
+				}),
+			view: _p2.view,
+			subscriptions: function (_p4) {
+				return _elm_lang$core$Platform_Sub$none;
+			}
+		});
+};
+var _elm_lang$html$Html_App$map = _elm_lang$virtual_dom$VirtualDom$map;
+
+var _caryhaynie$elm_electron$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_caryhaynie$elm_electron$Header$view(model.header)
+			]));
+};
+var _caryhaynie$elm_electron$Main$update = F2(
+	function (msg, model) {
+		return {
+			header: A2(_caryhaynie$elm_electron$Header$update, msg, model.header)
+		};
+	});
+var _caryhaynie$elm_electron$Main$model = {header: 'Hello, Electron!'};
+var _caryhaynie$elm_electron$Main$main = {
+	main: _elm_lang$html$Html_App$beginnerProgram(
+		{model: _caryhaynie$elm_electron$Main$model, update: _caryhaynie$elm_electron$Main$update, view: _caryhaynie$elm_electron$Main$view})
+};
+var _caryhaynie$elm_electron$Main$Model = function (a) {
+	return {header: a};
 };
 
 var Elm = {};
