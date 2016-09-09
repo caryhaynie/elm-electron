@@ -4,7 +4,8 @@
   "description": "Elm integration on top of Electron",
   "main": "index.js",
   "scripts": {
-    "elm": "node ./node_modules/elm/binwrappers/elm", 
+    "deploy": "node ./deploy.js",
+    "elm": "node ./node_modules/elm/binwrappers/elm",
     "elm:build": "node ./node_modules/elm/binwrappers/elm make ./src/Main.elm --output ./build/app.js",
     "test": "node ./node_modules/electron/cli.js index.js"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/caryhaynie/elm-electron#readme",
   "devDependencies": {
+    "copy-dir": "^0.3.0",
     "electron": "^1.3.5",
     "elm": "^0.17.1"
   }
